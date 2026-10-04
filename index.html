@@ -6,51 +6,279 @@
   <meta name="theme-color" content="#0b0b0c" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <title>Lock Stock — Фишки v2</title>
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <title>Lock Stock — Фишки</title>
   <style>
-    :root{--bg:#0b0b0c;--panel:#151517;--text:#f5f5f7;--muted:#929299;--border:#2a2a2e;--red:#d92d20;--yellow:#f2b90c;--green:#19a463;--blue:#3b82f6;--safe-top:env(safe-area-inset-top,0px);--safe-bottom:env(safe-area-inset-bottom,0px)}
-    *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}body{min-height:100dvh}button,input{font:inherit}button{border:0;cursor:pointer}.app{min-height:100dvh;padding:calc(18px + var(--safe-top)) 16px calc(18px + var(--safe-bottom));max-width:680px;margin:0 auto;display:flex;flex-direction:column;gap:14px}.top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}.eyebrow{color:var(--muted);font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}.round{margin-top:5px;font-size:20px;font-weight:800}.iconBtn{width:46px;height:46px;border-radius:14px;background:var(--panel);color:var(--text);font-size:21px;border:1px solid var(--border)}.balanceCard{background:linear-gradient(180deg,#171719,#111113);border:1px solid var(--border);border-radius:22px;padding:22px 18px;text-align:center}.balanceLabel{color:var(--muted);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.1em}.balance{margin-top:4px;font-size:56px;line-height:1;font-weight:900;font-variant-numeric:tabular-nums;letter-spacing:-.04em}.chipsLabel{margin-top:6px;color:var(--muted);font-size:14px}.actions{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:2px}.action{min-height:108px;border-radius:22px;color:white;font-weight:900;font-size:25px;letter-spacing:.02em;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}.fold{background:var(--red)}.check{background:var(--yellow);color:#171100}.raise{background:var(--green);grid-column:1/-1}.utility{display:grid;grid-template-columns:1fr 1fr;gap:10px}.secondary{min-height:52px;border-radius:16px;background:var(--panel);color:var(--text);border:1px solid var(--border);font-weight:800}.history{margin-top:auto;background:var(--panel);border:1px solid var(--border);border-radius:18px;padding:14px}.historyTitle{font-size:12px;color:var(--muted);font-weight:800;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}.historyList{display:flex;flex-direction:column;gap:7px}.historyItem{display:flex;justify-content:space-between;gap:10px;font-size:14px}.historyItem span:last-child{color:var(--muted)}.empty{color:var(--muted);font-size:14px}.overlay{position:fixed;inset:0;display:none;z-index:30;padding:calc(22px + var(--safe-top)) 18px calc(22px + var(--safe-bottom));align-items:center;justify-content:center;text-align:center;flex-direction:column}.overlay.show{display:flex}.overlay.foldScreen{background:var(--red);color:white}.overlay.checkScreen{background:var(--yellow);color:#171100}.overlay.raiseScreen{background:var(--green);color:white}.bigAction{font-size:clamp(54px,15vw,100px);font-weight:1000;letter-spacing:-.04em;line-height:.95}.bigAmount{font-size:clamp(70px,22vw,150px);font-weight:1000;line-height:.95;margin-top:18px;font-variant-numeric:tabular-nums}.afterBalance{margin-top:20px;font-size:18px;font-weight:800;opacity:.85}.continueBtn{margin-top:34px;width:min(440px,100%);min-height:66px;border-radius:20px;background:rgba(0,0,0,.78);color:white;font-size:20px;font-weight:900}.checkScreen .continueBtn{background:#171100;color:white}.sheet{position:fixed;inset:0;z-index:40;display:none;align-items:flex-end;background:rgba(0,0,0,.62);padding:0}.sheet.show{display:flex}.sheetCard{width:100%;max-width:680px;margin:0 auto;background:#161618;border-radius:24px 24px 0 0;padding:18px 16px calc(18px + var(--safe-bottom));border:1px solid var(--border);border-bottom:0}.grab{width:44px;height:5px;border-radius:99px;background:#4a4a50;margin:0 auto 16px}.sheetTitle{font-size:22px;font-weight:900;margin-bottom:12px}.moneyInput{width:100%;height:72px;border-radius:18px;border:1px solid var(--border);background:#0e0e10;color:white;font-size:34px;font-weight:900;text-align:center;outline:none;font-variant-numeric:tabular-nums}.quick{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}.quick button{min-height:48px;border-radius:14px;background:#26262a;color:white;font-weight:900}.quick .allin{background:#3a2424}.sheetActions{display:grid;grid-template-columns:1fr 1.4fr;gap:10px;margin-top:14px}.cancel,.confirm{min-height:58px;border-radius:16px;font-weight:900}.cancel{background:#27272b;color:white}.confirm{background:var(--green);color:white}.hint{color:var(--muted);font-size:13px;line-height:1.4;margin-top:9px;text-align:center}.modal{position:fixed;inset:0;z-index:50;display:none;background:rgba(0,0,0,.7);padding:calc(20px + var(--safe-top)) 16px calc(20px + var(--safe-bottom));align-items:center;justify-content:center}.modal.show{display:flex}.modalCard{width:min(520px,100%);background:#171719;border:1px solid var(--border);border-radius:24px;padding:20px}.modalCard h2{margin:0 0 16px;font-size:24px}.field{margin-bottom:14px}.field label{display:block;color:var(--muted);font-size:13px;font-weight:800;margin-bottom:7px}.field input{width:100%;height:56px;border-radius:15px;border:1px solid var(--border);background:#0e0e10;color:white;padding:0 14px;font-size:20px;font-weight:800;outline:none}.modalButtons{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}.danger{background:#3a1e1e;color:#ffb6b0}.primary{background:var(--blue);color:white}.modalButtons button{min-height:54px;border-radius:15px;font-weight:900}.full{grid-column:1/-1}.tiny{font-size:12px;color:var(--muted);line-height:1.45;margin-top:12px}.hidden{display:none!important}@media(max-width:380px){.balance{font-size:48px}.action{min-height:96px;font-size:22px}}
+    :root{
+      --bg:#0b0b0c;--panel:#151517;--panel2:#1d1d20;--text:#f5f5f7;--muted:#929299;
+      --border:#2a2a2e;--red:#d92d20;--yellow:#f2b90c;--green:#19a463;--blue:#3b82f6;
+      --safe-top:env(safe-area-inset-top,0px);--safe-bottom:env(safe-area-inset-bottom,0px)
+    }
+    *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+    html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+    body{min-height:100dvh}button,input{font:inherit}button{border:0;cursor:pointer}.hidden{display:none!important}
+    .app{min-height:100dvh;padding:calc(18px + var(--safe-top)) 16px calc(18px + var(--safe-bottom));max-width:680px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+    .top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}.eyebrow{color:var(--muted);font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}.questionNo{margin-top:5px;font-size:20px;font-weight:800}
+    .iconBtn{width:46px;height:46px;border-radius:14px;background:var(--panel);color:var(--text);font-size:21px;border:1px solid var(--border)}
+    .scoreGrid{display:grid;grid-template-columns:1.2fr .8fr;gap:10px}.statCard{background:linear-gradient(180deg,#171719,#111113);border:1px solid var(--border);border-radius:22px;padding:19px 14px;text-align:center}.statLabel{color:var(--muted);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.09em}.statValue{margin-top:5px;font-size:46px;line-height:1;font-weight:950;font-variant-numeric:tabular-nums;letter-spacing:-.04em}.potValue{font-size:40px}.chipsLabel{margin-top:5px;color:var(--muted);font-size:13px}
+    .anteCard{display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:13px 15px}.anteLeft{display:flex;flex-direction:column;gap:3px}.anteTitle{font-size:12px;color:var(--muted);font-weight:800;text-transform:uppercase;letter-spacing:.08em}.anteText{font-size:16px;font-weight:850}.antePct{font-size:22px;font-weight:950;color:#c7c7cc}
+    .actions{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:2px}.action{min-height:108px;border-radius:22px;color:white;font-weight:950;font-size:25px;letter-spacing:.02em;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}.fold{background:var(--red)}.check{background:var(--yellow);color:#171100}.raise{background:var(--green);grid-column:1/-1}.action:disabled{opacity:.38;cursor:not-allowed}
+    .utility{display:grid;grid-template-columns:1fr 1fr;gap:10px}.secondary{min-height:54px;border-radius:16px;background:var(--panel);color:var(--text);border:1px solid var(--border);font-weight:850;padding:8px}.newQuestion{background:#20232a}
+    .history{margin-top:auto;background:var(--panel);border:1px solid var(--border);border-radius:18px;padding:14px}.historyTitle{font-size:12px;color:var(--muted);font-weight:800;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}.historyList{display:flex;flex-direction:column;gap:7px}.historyItem{display:flex;justify-content:space-between;gap:10px;font-size:14px}.historyItem span:last-child{color:var(--muted);white-space:nowrap}.empty{color:var(--muted);font-size:14px}
+    .overlay{position:fixed;inset:0;display:none;z-index:30;padding:calc(22px + var(--safe-top)) 18px calc(22px + var(--safe-bottom));align-items:center;justify-content:center;text-align:center;flex-direction:column}.overlay.show{display:flex}.overlay.foldScreen{background:var(--red);color:white}.overlay.checkScreen{background:var(--yellow);color:#171100}.overlay.raiseScreen{background:var(--green);color:white}
+    .bigAction{font-size:clamp(54px,15vw,100px);font-weight:1000;letter-spacing:-.04em;line-height:.95}.bigAmount{font-size:clamp(70px,22vw,150px);font-weight:1000;line-height:.95;margin-top:18px;font-variant-numeric:tabular-nums}.afterBalance{margin-top:20px;font-size:18px;font-weight:850;line-height:1.5;opacity:.88}.continueBtn{margin-top:34px;width:min(440px,100%);min-height:66px;border-radius:20px;background:rgba(0,0,0,.78);color:white;font-size:20px;font-weight:900}.checkScreen .continueBtn{background:#171100;color:white}
+    .foldActions{width:min(440px,100%);margin-top:34px;display:flex;flex-direction:column;gap:10px}.foldNew{min-height:66px;border-radius:20px;background:rgba(0,0,0,.82);color:white;font-size:19px;font-weight:900}.unfoldBtn{background:transparent;color:rgba(255,255,255,.75);padding:12px;font-size:14px;text-decoration:underline}
+    .sheet{position:fixed;inset:0;z-index:40;display:none;align-items:flex-end;background:rgba(0,0,0,.62)}.sheet.show{display:flex}.sheetCard{width:100%;max-width:680px;margin:0 auto;background:#161618;border-radius:24px 24px 0 0;padding:18px 16px calc(18px + var(--safe-bottom));border:1px solid var(--border);border-bottom:0}.grab{width:44px;height:5px;border-radius:99px;background:#4a4a50;margin:0 auto 16px}.sheetTitle{font-size:22px;font-weight:900;margin-bottom:12px}.moneyInput{width:100%;height:72px;border-radius:18px;border:1px solid var(--border);background:#0e0e10;color:white;font-size:34px;font-weight:900;text-align:center;outline:none;font-variant-numeric:tabular-nums}.quick{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}.quick.bankMode{grid-template-columns:repeat(3,1fr)}.quick button{min-height:48px;border-radius:14px;background:#26262a;color:white;font-weight:900}.quick .allin{background:#3a2424}.sheetActions{display:grid;grid-template-columns:1fr 1.4fr;gap:10px;margin-top:14px}.cancel,.confirm{min-height:58px;border-radius:16px;font-weight:900}.cancel{background:#27272b;color:white}.confirm{background:var(--green);color:white}.hint{color:var(--muted);font-size:13px;line-height:1.4;margin-top:9px;text-align:center}
+    .modal{position:fixed;inset:0;z-index:50;display:none;background:rgba(0,0,0,.7);padding:calc(20px + var(--safe-top)) 16px calc(20px + var(--safe-bottom));align-items:center;justify-content:center}.modal.show{display:flex}.modalCard{width:min(520px,100%);background:#171719;border:1px solid var(--border);border-radius:24px;padding:20px}.modalCard h2{margin:0 0 16px;font-size:24px}.field{margin-bottom:14px}.field label{display:block;color:var(--muted);font-size:13px;font-weight:800;margin-bottom:7px}.field input{width:100%;height:56px;border-radius:15px;border:1px solid var(--border);background:#0e0e10;color:white;padding:0 14px;font-size:20px;font-weight:800;outline:none}.modalButtons{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}.danger{background:#3a1e1e;color:#ffb6b0}.primary{background:var(--blue);color:white}.modalButtons button{min-height:54px;border-radius:15px;font-weight:900}.full{grid-column:1/-1}.tiny{font-size:12px;color:var(--muted);line-height:1.45;margin-top:12px}
+    @media(max-width:390px){.statValue{font-size:42px}.potValue{font-size:36px}.action{min-height:100px;font-size:22px}.secondary{font-size:13px}}
   </style>
 </head>
 <body>
-  <main class="app">
-    <div class="top"><div><div class="eyebrow">Lock Stock · фишки</div><div class="round">Раунд <span id="round">1</span></div></div><button class="iconBtn" id="settingsBtn" aria-label="Настройки">⚙︎</button></div>
-    <section class="balanceCard"><div class="balanceLabel">Баланс</div><div class="balance" id="balance">1000</div><div class="chipsLabel">фишек</div></section>
-    <section class="actions"><button class="action fold" id="foldBtn">ПАСС</button><button class="action check" id="checkBtn">ЧЕК</button><button class="action raise" id="raiseBtn">ПОДНИМАЮ</button></section>
-    <section class="utility"><button class="secondary" id="winBtn">+ ПОЛУЧИТЬ БАНК</button><button class="secondary" id="nextRoundBtn">НОВЫЙ РАУНД</button></section>
-    <section class="history"><div class="historyTitle">Последние действия</div><div class="historyList" id="historyList"></div></section>
-  </main>
-  <section class="overlay" id="actionOverlay"><div class="bigAction" id="bigAction">ЧЕК</div><div class="bigAmount hidden" id="bigAmount">200</div><div class="afterBalance" id="afterBalance"></div><button class="continueBtn" id="continueBtn">ГОТОВО</button></section>
-  <section class="sheet" id="moneySheet"><div class="sheetCard"><div class="grab"></div><div class="sheetTitle" id="moneyTitle">Сколько ставишь?</div><input class="moneyInput" id="moneyInput" type="number" inputmode="numeric" min="0" step="1" placeholder="0" /><div class="quick" id="quickBtns"><button data-add="50">+50</button><button data-add="100">+100</button><button data-add="250">+250</button><button class="allin" id="allInBtn">ALL IN</button></div><div class="sheetActions"><button class="cancel" id="moneyCancel">ОТМЕНА</button><button class="confirm" id="moneyConfirm">ПОДТВЕРДИТЬ</button></div><div class="hint" id="moneyHint">Сумма спишется с твоего баланса.</div></div></section>
-  <section class="modal" id="settingsModal"><div class="modalCard"><h2>Настройки</h2><div class="field"><label for="balanceEdit">Баланс</label><input id="balanceEdit" type="number" inputmode="numeric" min="0" step="1" /></div><div class="field"><label for="roundEdit">Раунд</label><input id="roundEdit" type="number" inputmode="numeric" min="1" step="1" /></div><div class="modalButtons"><button class="cancel" id="settingsCancel">ОТМЕНА</button><button class="primary" id="settingsSave">СОХРАНИТЬ</button><button class="danger full" id="resetBtn">СБРОСИТЬ ИГРУ</button></div><div class="tiny">Состояние автоматически сохраняется на этом телефоне. Если случайно закрыть страницу, баланс и раунд останутся.</div></div></section>
+<main class="app">
+  <div class="top">
+    <div><div class="eyebrow">Lock Stock · фишки</div><div class="questionNo">Вопрос <span id="question">1</span> / 25</div></div>
+    <button class="iconBtn" id="settingsBtn" aria-label="Настройки">⚙︎</button>
+  </div>
+
+  <section class="scoreGrid">
+    <div class="statCard"><div class="statLabel">Баланс</div><div class="statValue" id="balance">950</div><div class="chipsLabel">фишек</div></div>
+    <div class="statCard"><div class="statLabel">В банке от меня</div><div class="statValue potValue" id="contributed">50</div><div class="chipsLabel">фишек</div></div>
+  </section>
+
+  <section class="anteCard">
+    <div class="anteLeft"><div class="anteTitle">Обязательная ставка</div><div class="anteText"><span id="anteAmount">50</span> фишек · уже списано</div></div>
+    <div class="antePct" id="antePercent">5%</div>
+  </section>
+
+  <section class="actions">
+    <button class="action fold" id="foldBtn">ПАСС</button>
+    <button class="action check" id="checkBtn">ЧЕК</button>
+    <button class="action raise" id="raiseBtn">ПОДНИМАЮ</button>
+  </section>
+
+  <section class="utility">
+    <button class="secondary" id="winBtn">+ ПОЛУЧИТЬ БАНК</button>
+    <button class="secondary newQuestion" id="nextQuestionBtn">НОВЫЙ ВОПРОС</button>
+  </section>
+
+  <section class="history"><div class="historyTitle">Последние действия</div><div class="historyList" id="historyList"></div></section>
+</main>
+
+<section class="overlay" id="actionOverlay">
+  <div class="bigAction" id="bigAction">ЧЕК</div>
+  <div class="bigAmount hidden" id="bigAmount">200</div>
+  <div class="afterBalance" id="afterBalance"></div>
+  <button class="continueBtn" id="continueBtn">ГОТОВО</button>
+</section>
+
+<section class="overlay foldScreen" id="foldOverlay">
+  <div class="bigAction">ПАСС</div>
+  <div class="afterBalance" id="foldInfo"></div>
+  <div class="foldActions">
+    <button class="foldNew" id="foldNextQuestionBtn">НОВЫЙ ВОПРОС</button>
+    <button class="unfoldBtn" id="unfoldBtn">Отменить пас</button>
+  </div>
+</section>
+
+<section class="sheet" id="moneySheet">
+  <div class="sheetCard">
+    <div class="grab"></div><div class="sheetTitle" id="moneyTitle">Сколько кладёшь сейчас?</div>
+    <input class="moneyInput" id="moneyInput" type="number" inputmode="numeric" min="0" step="1" placeholder="0" />
+    <div class="quick" id="quickBtns">
+      <button data-add="50">+50</button><button data-add="100">+100</button><button data-add="250">+250</button><button class="allin" id="allInBtn">ALL IN</button>
+    </div>
+    <div class="sheetActions"><button class="cancel" id="moneyCancel">ОТМЕНА</button><button class="confirm" id="moneyConfirm">ПОДТВЕРДИТЬ</button></div>
+    <div class="hint" id="moneyHint">Сумма спишется с баланса и добавится в «В банке от меня».</div>
+  </div>
+</section>
+
+<section class="modal" id="settingsModal">
+  <div class="modalCard">
+    <h2>Настройки</h2>
+    <div class="field"><label for="balanceEdit">Баланс</label><input id="balanceEdit" type="number" inputmode="numeric" min="0" step="1" /></div>
+    <div class="field"><label for="questionEdit">Номер вопроса</label><input id="questionEdit" type="number" inputmode="numeric" min="1" max="25" step="1" /></div>
+    <div class="modalButtons"><button class="cancel" id="settingsCancel">ОТМЕНА</button><button class="primary" id="settingsSave">СОХРАНИТЬ</button><button class="danger full" id="resetBtn">СБРОСИТЬ ИГРУ</button></div>
+    <div class="tiny">Обязательная ставка округляется до целых фишек. На новом вопросе личный вклад в банк обнуляется, затем автоматически списывается новая обязательная ставка.</div>
+  </div>
+</section>
+
 <script>
 (() => {
-  const KEY = "lockstock_chips_v1";
-  const defaultState = {balance:1000,round:1,history:[]};
-  let state = loadState(); let moneyMode = "raise";
+  const KEY = "lockstock_chips_v3";
+  const TOTAL_QUESTIONS = 25;
+  const START_BALANCE = 1000;
   const $ = id => document.getElementById(id);
-  function loadState(){try{const raw=localStorage.getItem(KEY);if(!raw)return {...defaultState};const parsed=JSON.parse(raw);return {balance:Number.isFinite(+parsed.balance)?Math.max(0,Math.floor(+parsed.balance)):1000,round:Number.isFinite(+parsed.round)?Math.max(1,Math.floor(+parsed.round)):1,history:Array.isArray(parsed.history)?parsed.history.slice(0,8):[]}}catch(e){return {...defaultState}}}
-  function saveState(){try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}}
-  function render(){$("balance").textContent=formatNum(state.balance);$("round").textContent=state.round;renderHistory();saveState()}
-  function formatNum(n){return new Intl.NumberFormat("ru-RU").format(n)}
-  function addHistory(label,detail=""){const stamp=`Раунд ${state.round}`;state.history.unshift({label,detail,stamp});state.history=state.history.slice(0,8);render()}
-  function renderHistory(){const box=$("historyList");box.innerHTML="";if(!state.history.length){box.innerHTML='<div class="empty">Пока пусто</div>';return}for(const item of state.history){const row=document.createElement("div");row.className="historyItem";const left=document.createElement("span");left.textContent=item.detail?`${item.label} · ${item.detail}`:item.label;const right=document.createElement("span");right.textContent=item.stamp;row.append(left,right);box.appendChild(row)}}
-  function showAction(type,amount=null){const ov=$("actionOverlay");ov.className="overlay show "+(type==="ПАСС"?"foldScreen":type==="ЧЕК"?"checkScreen":"raiseScreen");$("bigAction").textContent=type;$("bigAmount").classList.toggle("hidden",amount===null);if(amount!==null)$("bigAmount").textContent=formatNum(amount);$("afterBalance").textContent=`Баланс: ${formatNum(state.balance)}`}
-  $("foldBtn").addEventListener("click",()=>{addHistory("ПАСС");showAction("ПАСС")});
-  $("checkBtn").addEventListener("click",()=>{addHistory("ЧЕК");showAction("ЧЕК")});
-  $("raiseBtn").addEventListener("click",()=>openMoneySheet("raise")); $("winBtn").addEventListener("click",()=>openMoneySheet("bank"));
-  function openMoneySheet(mode){moneyMode=mode;$("moneyInput").value="";$("moneySheet").classList.add("show");if(mode==="raise"){$("moneyTitle").textContent="Сколько ставишь?";$("moneyConfirm").textContent="ПОДТВЕРДИТЬ";$("moneyHint").textContent="Сумма спишется с твоего баланса."}else{$("moneyTitle").textContent="Сколько выиграл?";$("moneyConfirm").textContent="ДОБАВИТЬ";$("moneyHint").textContent="Сумма добавится к твоему балансу."}setTimeout(()=>$("moneyInput").focus(),120)}
-  function closeMoneySheet(){$("moneySheet").classList.remove("show");$("moneyInput").blur()}
-  $("moneyCancel").addEventListener("click",closeMoneySheet);$("moneySheet").addEventListener("click",e=>{if(e.target===$("moneySheet"))closeMoneySheet()});
-  document.querySelectorAll("[data-add]").forEach(btn=>btn.addEventListener("click",()=>{const current=Math.max(0,parseInt($("moneyInput").value||"0",10)||0);$("moneyInput").value=current+parseInt(btn.dataset.add,10)}));
-  $("allInBtn").addEventListener("click",()=>{$("moneyInput").value=state.balance});
-  $("moneyConfirm").addEventListener("click",()=>{const amount=Math.floor(Number($("moneyInput").value));if(!Number.isFinite(amount)||amount<=0){alert("Введи сумму больше нуля.");return}if(moneyMode==="raise"){if(amount>state.balance){alert("Ставка больше твоего баланса.");return}state.balance-=amount;addHistory("ПОДНЯЛ",formatNum(amount));closeMoneySheet();showAction("ПОДНИМАЮ",amount)}else{state.balance+=amount;addHistory("БАНК +",formatNum(amount));closeMoneySheet()}});
-  $("continueBtn").addEventListener("click",()=>{$("actionOverlay").className="overlay"});
-  $("nextRoundBtn").addEventListener("click",()=>{state.round+=1;addHistory("НОВЫЙ РАУНД")});
-  $("settingsBtn").addEventListener("click",()=>{$("balanceEdit").value=state.balance;$("roundEdit").value=state.round;$("settingsModal").classList.add("show")});
-  $("settingsCancel").addEventListener("click",()=>{$("settingsModal").classList.remove("show")});
-  $("settingsSave").addEventListener("click",()=>{const b=Math.floor(Number($("balanceEdit").value));const r=Math.floor(Number($("roundEdit").value));if(!Number.isFinite(b)||b<0||!Number.isFinite(r)||r<1){alert("Проверь баланс и номер раунда.");return}state.balance=b;state.round=r;addHistory("РУЧНАЯ КОРРЕКТИРОВКА");$("settingsModal").classList.remove("show")});
-  $("resetBtn").addEventListener("click",()=>{if(!confirm("Сбросить баланс, раунд и историю?"))return;state={...defaultState,history:[]};render();$("settingsModal").classList.remove("show")});
+  const fmt = n => new Intl.NumberFormat("ru-RU").format(n);
+
+  function antePercent(question){
+    if(question <= 5) return 5;
+    if(question <= 10) return 7;
+    if(question <= 15) return 9;
+    if(question <= 20) return 11;
+    return 13;
+  }
+
+  function calcAnte(balance, question){
+    if(balance <= 0) return 0;
+    const rounded = Math.round(balance * antePercent(question) / 100);
+    return Math.min(balance, Math.max(1, rounded));
+  }
+
+  function freshState(){
+    const q = 1;
+    const ante = calcAnte(START_BALANCE, q);
+    return {balance: START_BALANCE - ante, question:q, contributed:ante, anteAmount:ante, folded:false, history:[{label:"ОБЯЗАТЕЛЬНАЯ СТАВКА",detail:fmt(ante),stamp:"Вопрос 1"}]};
+  }
+
+  function loadState(){
+    try{
+      const raw = localStorage.getItem(KEY);
+      if(!raw) return freshState();
+      const p = JSON.parse(raw);
+      return {
+        balance: Math.max(0, Math.floor(Number(p.balance) || 0)),
+        question: Math.min(TOTAL_QUESTIONS, Math.max(1, Math.floor(Number(p.question) || 1))),
+        contributed: Math.max(0, Math.floor(Number(p.contributed) || 0)),
+        anteAmount: Math.max(0, Math.floor(Number(p.anteAmount) || 0)),
+        folded: !!p.folded,
+        history: Array.isArray(p.history) ? p.history.slice(0,10) : []
+      };
+    }catch(e){ return freshState(); }
+  }
+
+  let state = loadState();
+  let moneyMode = "raise";
+
+  function saveState(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
+
+  function addHistory(label, detail=""){
+    state.history.unshift({label, detail, stamp:`Вопрос ${state.question}`});
+    state.history = state.history.slice(0,10);
+  }
+
+  function renderHistory(){
+    const box = $("historyList"); box.innerHTML = "";
+    if(!state.history.length){ box.innerHTML = '<div class="empty">Пока пусто</div>'; return; }
+    for(const item of state.history){
+      const row = document.createElement("div"); row.className = "historyItem";
+      const left = document.createElement("span"); left.textContent = item.detail ? `${item.label} · ${item.detail}` : item.label;
+      const right = document.createElement("span"); right.textContent = item.stamp;
+      row.append(left,right); box.appendChild(row);
+    }
+  }
+
+  function render(){
+    $("balance").textContent = fmt(state.balance);
+    $("question").textContent = state.question;
+    $("contributed").textContent = fmt(state.contributed);
+    $("anteAmount").textContent = fmt(state.anteAmount);
+    $("antePercent").textContent = `${antePercent(state.question)}%`;
+    $("raiseBtn").disabled = state.balance <= 0;
+    $("foldInfo").innerHTML = `В банке от меня: <b>${fmt(state.contributed)}</b><br>Баланс: <b>${fmt(state.balance)}</b>`;
+    renderHistory();
+    $("foldOverlay").classList.toggle("show", state.folded);
+    saveState();
+  }
+
+  function showAction(type, amount=null){
+    const ov = $("actionOverlay");
+    ov.className = "overlay show " + (type === "ЧЕК" ? "checkScreen" : "raiseScreen");
+    $("bigAction").textContent = type;
+    $("bigAmount").classList.toggle("hidden", amount === null);
+    if(amount !== null) $("bigAmount").textContent = fmt(amount);
+    $("afterBalance").innerHTML = `В банке от меня: <b>${fmt(state.contributed)}</b><br>Баланс: <b>${fmt(state.balance)}</b>`;
+  }
+
+  function startNextQuestion(){
+    if(state.question >= TOTAL_QUESTIONS){
+      alert("Это был последний, 25-й вопрос.");
+      return;
+    }
+    state.question += 1;
+    state.folded = false;
+    state.contributed = 0;
+    const ante = calcAnte(state.balance, state.question);
+    state.balance -= ante;
+    state.contributed = ante;
+    state.anteAmount = ante;
+    addHistory("ОБЯЗАТЕЛЬНАЯ СТАВКА", fmt(ante));
+    $("actionOverlay").className = "overlay";
+    render();
+  }
+
+  $("foldBtn").addEventListener("click", () => { state.folded = true; addHistory("ПАСС"); render(); });
+  $("checkBtn").addEventListener("click", () => { addHistory("ЧЕК"); render(); showAction("ЧЕК"); });
+  $("raiseBtn").addEventListener("click", () => { if(state.balance > 0) openMoneySheet("raise"); });
+  $("winBtn").addEventListener("click", () => openMoneySheet("bank"));
+  $("nextQuestionBtn").addEventListener("click", startNextQuestion);
+  $("foldNextQuestionBtn").addEventListener("click", startNextQuestion);
+  $("unfoldBtn").addEventListener("click", () => { state.folded = false; addHistory("ПАСС ОТМЕНЁН"); render(); });
+  $("continueBtn").addEventListener("click", () => { $("actionOverlay").className = "overlay"; });
+
+  function openMoneySheet(mode){
+    moneyMode = mode;
+    $("moneyInput").value = "";
+    $("moneySheet").classList.add("show");
+    const quick = $("quickBtns");
+    if(mode === "raise"){
+      $("moneyTitle").textContent = "Сколько кладёшь сейчас?";
+      $("moneyConfirm").textContent = "ПОДТВЕРДИТЬ";
+      $("moneyHint").textContent = "Сумма спишется с баланса и добавится в «В банке от меня».";
+      $("allInBtn").classList.remove("hidden"); quick.classList.remove("bankMode");
+    }else{
+      $("moneyTitle").textContent = "Сколько банк?";
+      $("moneyConfirm").textContent = "ДОБАВИТЬ";
+      $("moneyHint").textContent = "Введи весь выигранный банк — сумма добавится к балансу.";
+      $("allInBtn").classList.add("hidden"); quick.classList.add("bankMode");
+    }
+    setTimeout(() => $("moneyInput").focus(), 120);
+  }
+
+  function closeMoneySheet(){ $("moneySheet").classList.remove("show"); $("moneyInput").blur(); }
+  $("moneyCancel").addEventListener("click", closeMoneySheet);
+  $("moneySheet").addEventListener("click", e => { if(e.target === $("moneySheet")) closeMoneySheet(); });
+  document.querySelectorAll("[data-add]").forEach(btn => btn.addEventListener("click", () => {
+    const current = Math.max(0, parseInt($("moneyInput").value || "0", 10) || 0);
+    $("moneyInput").value = current + parseInt(btn.dataset.add,10);
+  }));
+  $("allInBtn").addEventListener("click", () => { $("moneyInput").value = state.balance; });
+
+  $("moneyConfirm").addEventListener("click", () => {
+    const amount = Math.floor(Number($("moneyInput").value));
+    if(!Number.isFinite(amount) || amount <= 0){ alert("Введи сумму больше нуля."); return; }
+    if(moneyMode === "raise"){
+      if(amount > state.balance){ alert("Ставка больше твоего баланса."); return; }
+      state.balance -= amount;
+      state.contributed += amount;
+      addHistory("ПОДНЯЛ", fmt(amount));
+      closeMoneySheet(); render(); showAction("ПОДНИМАЮ", amount);
+    }else{
+      state.balance += amount;
+      addHistory("ПОЛУЧИЛ БАНК", fmt(amount));
+      closeMoneySheet(); render();
+    }
+  });
+
+  $("settingsBtn").addEventListener("click", () => {
+    $("balanceEdit").value = state.balance;
+    $("questionEdit").value = state.question;
+    $("settingsModal").classList.add("show");
+  });
+  $("settingsCancel").addEventListener("click", () => $("settingsModal").classList.remove("show"));
+  $("settingsSave").addEventListener("click", () => {
+    const b = Math.floor(Number($("balanceEdit").value));
+    const q = Math.floor(Number($("questionEdit").value));
+    if(!Number.isFinite(b) || b < 0 || !Number.isFinite(q) || q < 1 || q > TOTAL_QUESTIONS){ alert("Проверь баланс и номер вопроса."); return; }
+    state.balance = b; state.question = q; state.folded = false;
+    addHistory("РУЧНАЯ КОРРЕКТИРОВКА");
+    $("settingsModal").classList.remove("show"); render();
+  });
+  $("resetBtn").addEventListener("click", () => {
+    if(!confirm("Сбросить игру и начать заново со стартовых 1000 фишек?")) return;
+    state = freshState(); $("settingsModal").classList.remove("show"); $("actionOverlay").className = "overlay"; render();
+  });
+
+  if("serviceWorker" in navigator){ window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js").catch(()=>{})); }
   render();
 })();
 </script>
